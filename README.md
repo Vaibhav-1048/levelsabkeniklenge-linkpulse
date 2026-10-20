@@ -118,5 +118,6 @@ This is a hackathon prototype. Redirects, click counting and password checks run
 ## Team members
 
 - Vaibhav Pargaien ([@Vaibhav-1048](https://github.com/Vaibhav-1048))
-  
--Rajeev Gupta (@Rajeev1045r https://github.com/Rajeev1045r))
+- Saurya Chand ([@chandsaurya](https://github.com/chandsaurya))  
+- Rajeev Gupta (@Rajeev1045r](https://github.com/Rajeev1045r))
+
