@@ -119,5 +119,5 @@ This is a hackathon prototype. Redirects, click counting and password checks run
 
 - Vaibhav Pargaien ([@Vaibhav-1048](https://github.com/Vaibhav-1048))
 - Saurya Chand ([@chandsaurya](https://github.com/chandsaurya))  
-- Rajeev Gupta (@Rajeev1045r](https://github.com/Rajeev1045r))
+- Rajeev Gupta ([@Rajeev1045r](https://github.com/Rajeev1045r))
 
