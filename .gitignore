@@ -68,3 +68,5 @@ node_modules/
 # dataconnect generated files
 .dataconnect
 .vercel
+dist
+.DS_Store
