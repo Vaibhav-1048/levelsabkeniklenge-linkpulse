@@ -1,0 +1,16 @@
+{
+  "name": "linkpulse-starter",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "firebase": "^11.0.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /links/{linkId} {
+      allow read: if true;
+
+      allow create: if request.auth != null
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.clicks == 0;
+
+      allow update: if request.auth != null
+        && resource.data.ownerId == request.auth.uid;
+
+      // Anyone may only bump clicks by exactly 1
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['clicks'])
+        && request.resource.data.clicks == resource.data.clicks + 1;
+
+      allow delete: if false;
+    }
+
+    // Destinations of password-protected links.
+    // Doc ID = linkId + "_" + hash(password). Can be fetched only if you know the ID.
+    match /linkSecrets/{secretId} {
+      allow get: if true;
+      allow list: if false;
+      allow create: if request.auth != null
+        && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if false;
+    }
+
+    match /clickEvents/{eventId} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+  }
+}

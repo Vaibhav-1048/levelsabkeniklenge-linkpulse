@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkPulse — Link management & analytics</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">↗</span> LinkPulse</a>
+    <nav><a href="#dashboard">Dashboard</a><a href="#create">Create link</a><a href="#links">My links</a></nav>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span id="connection" class="status-pill">Connecting…</span>
+      <button id="authButton" class="secondary-btn" type="button" style="padding:9px 14px">Sign in with Google</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">LINK MANAGEMENT, SIMPLIFIED</p>
+        <h1>Every link has<br><span> a bigger story.</span></h1>
+        <p class="hero-copy">Create short links, track visits, and understand what gets attention.</p>
+        <a class="primary-btn" href="#create">＋ Create a link</a>
+      </div>
+      <div class="hero-card">
+        <div class="orb"></div>
+        <p class="muted">YOUR LINKS, IN ONE PLACE</p>
+        <div class="mini-line"><span>linkpulse.app/campus</span><b>↗</b></div>
+        <div class="mini-line"><span>linkpulse.app/event26</span><b>↗</b></div>
+        <div class="mini-line"><span>linkpulse.app/portfolio</span><b>↗</b></div>
+        <small>Illustrative preview — your real links appear below.</small>
+      </div>
+    </section>
+
+    <section id="dashboard" class="stats-grid">
+      <article class="stat-card"><span>Total links</span><strong id="totalLinks">—</strong><small>Links in your workspace</small></article>
+      <article class="stat-card"><span>Total clicks</span><strong id="totalClicks">—</strong><small>Recorded visits</small></article>
+      <article class="stat-card"><span>Active links</span><strong id="activeLinks">—</strong><small>Enabled and not expired</small></article>
+    </section>
+
+    <section id="create" class="panel">
+      <div class="section-heading"><div><p class="eyebrow">GET STARTED</p><h2>Create a short link</h2></div><span class="step-label">01 / CREATE</span></div>
+      <form id="linkForm" autocomplete="off">
+        <label for="destination">Destination URL</label>
+        <input id="destination" type="url" placeholder="https://example.com/your-long-page" required>
+        <div class="form-row">
+          <div class="field">
+            <label for="alias">Custom alias <span class="muted">(optional)</span></label>
+            <div class="alias-input"><span>your-site/</span><input id="alias" type="text" maxlength="32" placeholder="my-link" pattern="[A-Za-z0-9_-]*" autocomplete="off"></div>
+            <small>Letters, numbers, hyphens and underscores.</small>
+          </div>
+          <div class="field">
+            <label for="expiry">Expiry date <span class="muted">(optional)</span></label>
+            <input id="expiry" type="datetime-local">
+          </div>
+          <div class="field">
+            <label for="limit">Click limit <span class="muted">(optional)</span></label>
+            <input id="limit" type="number" min="1" step="1" placeholder="e.g. 100">
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:22px">
+          <label for="password">Password <span class="muted">(optional)</span></label>
+          <input id="password" type="password" placeholder="Leave empty for a public link" autocomplete="new-password">
+          <small>Visitors must enter this password before they are redirected. Minimum 4 characters.</small>
+        </div>
+        <button class="primary-btn" id="createButton" type="submit">Create short link <span>→</span></button>
+        <p id="formMessage" class="message" role="status"></p>
+      </form>
+    </section>
+
+    <section id="links" class="panel">
+      <div class="section-heading"><div><p class="eyebrow">YOUR WORKSPACE</p><h2>Your links</h2></div><button id="refreshButton" class="secondary-btn" type="button">↻ Refresh</button></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>SHORT LINK</th><th>DESTINATION</th><th>CLICKS</th><th>STATUS</th><th></th></tr></thead>
+          <tbody id="linksBody"><tr><td colspan="5" class="empty">Loading your links…</td></tr></tbody>
+        </table>
+      </div>
+      <p class="footnote">Prototype note: click tracking from a browser-only app can be manipulated. Use a trusted server/Cloud Function for production redirects and click-limit enforcement.</p>
+    </section>
+    <footer>LinkPulse · Hackathon prototype · Built with HTML, CSS, JavaScript & Firebase</footer>
+  </main>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
